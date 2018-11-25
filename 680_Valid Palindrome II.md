@@ -16,7 +16,7 @@ The string will only contain lowercase characters a-z. The maximum length of the
 
 ##解析：
 
-、、、class Solution {
+    class Solution {
     public boolean validPalindrome(String s) {
         int i=0,j=s.length()-1;
         while(i<=j){

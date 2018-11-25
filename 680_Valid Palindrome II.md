@@ -27,7 +27,6 @@ The string will only contain lowercase characters a-z. The maximum length of the
         }
         return true;
     }
-    
     private boolean isPalindrome(String s, int i,int j){
         while(i<=j){
             if(s.charAt(i)!=s.charAt(j))

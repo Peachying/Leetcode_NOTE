@@ -1,4 +1,4 @@
-##题目描述：
+## 题目描述：
 
 Given a non-empty string s, you may delete at most one character. Judge whether you can make it a palindrome. 
 Example 1:
@@ -14,7 +14,7 @@ Note:
 The string will only contain lowercase characters a-z. The maximum length of the string is 50000.
 也就是说可以最多去掉一个字符判断是否回文。
 
-##解析：
+## 解析：还是用两个指针，从两边比较，遇到不同的调用子函数分别减少一个元素判断。
 
     class Solution {
     public boolean validPalindrome(String s) {
@@ -36,6 +36,6 @@ The string will only contain lowercase characters a-z. The maximum length of the
         }
         return true;
     }
-}
-、、、
+    }
+
 

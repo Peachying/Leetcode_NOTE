@@ -1,0 +1,46 @@
+### 题目描述：
+输入一个整数数组，
+实现一个函数来调整该数组中数字的顺序，
+使得所有的奇数位于数组的前半部分，所有的偶数位于数组的后半部分，并保证奇数和奇数，偶数和偶数之间的相对位置不变。
+
+### 分析： 可以借鉴排序，只不过这里比较的不是大小而是奇偶。
+
+#### 方法一： 插入法。从第二个元素开始插入，如果前面的元素是偶数就将其向后推一位，直到那个数字是奇数，就把这个元素放在他后面。
+依次向后循环到最后一个元素。
+
+    public class Solution {
+        public void reOrderArray(int [] array) {
+            for(int i=1; i<array.length;i++){
+                if(array[i]%2==0)
+                    continue;
+                else{
+                    int j = i - 1;
+                    int cur = array[i];
+                    while(j>=0 && (array[j]%2==0)){
+                        array[j+1] = array[j];
+                        j--;
+                    }                
+                    array[j+1] = cur;//注意这里是j+1, 因为第j个元素是奇数
+                }
+            }
+        }
+    }
+    
+方法二：但是这种方法不能保证稳定性==
+参考剑指offer， 一个头指针一个尾指针，头指针向后寻找偶数，尾指针向前寻找奇数，两个都找到且头指针在尾指针之前就交换，否则就说明完成转换。
+    public class Solution {
+        public void reOrderArray(int [] array) {
+            int i = 0, j = array.length - 1;
+            while(i<j){
+                while(array[i]%2==1)
+                    i++;
+                while(array[j]%2==0)
+                    j--;
+                if(i>=j)
+                    break;
+                int temp = array[i];
+                array[i] = array[j];
+                array[j] = temp;
+            }
+        }
+    }

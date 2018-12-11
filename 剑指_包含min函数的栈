@@ -1,0 +1,38 @@
+##### 题目描述：
+  定义栈的数据结构，请在该类型中实现一个能够得到栈中所含最小元素的min函数（时间复杂度应为O（1））。
+  
+##### 思路： 
+  时间复杂度有要求，所以不能每次比较搜索最小值。如果用一个变量存储当前最小值，如果弹出一个元素就需要查找最小值。
+  所以用一个相同大小的栈保存最小值，每次push一个元素进来就比较，然后将最小值压栈。注意两种情况：一种是min栈本身为空，那么直接压入，否则才需要比较大小。
+  如果不做分情况就会null报错。
+  
+      import java.util.Stack;
+
+    public class Solution {
+        public Stack<Integer> stack = new Stack<>();
+        public Stack<Integer> min = new Stack<>();
+
+        public void push(int node) {
+            if(min.isEmpty())
+                min.push(node);
+            else{
+                min.push(node<min.peek()? node:min.peek());
+                stack.push(node);
+            }
+        }
+
+        public void pop() {
+            if(stack!= null && min!= null){
+                stack.pop();
+                min.pop();
+            }
+        }
+
+        public int top() {
+           return (int)stack.pop();
+        }
+
+        public int min() {
+            return (int)min.peek();
+        }
+    }
